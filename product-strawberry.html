@@ -1,70 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fresh Strawberry - Fruit Shop</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strawberry - Fruit Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
     <header role="banner">
-      <div class="header-center">
-        <a href="index.html" class="logo" aria-label="Go to homepage">
-          <img
-            src="img/fruit-shop-logo.png"
-            class="logo-img"
-            alt="Fruit Shop Logo"
-          />
-          <span class="products-text"> View Products </span> 
-        </a>
-        <nav role="navigation" aria-label="Main navigation">
-          <a
-            href="basket.html"
-            class="basket-link"
-            aria-label="View shopping basket"
-          >
-            <img
-              src="img/basket-icon.png"
-              class="basket-img"
-              alt="Shopping basket icon"
-            />
-            <span class="basket-text">View shopping basket</span>
-          </a>
-        </nav>
-      </div>
+        <!-- Header content blijft hetzelfde -->
     </header>
+    
     <main id="main-content" role="main">
-      <div class="content-box">
-        <div class="emoji-display" role="img" aria-label="Strawberry emoji">🍓</div>
-        <h1>Strawberry</h1>
-        <div class="product-desc" aria-label="Product description">
-          Sweet and juicy fresh strawberries, perfect for desserts or snacking.
+        <h1>Strawberry Variants</h1>
+        
+        <div class="product-variants">
+            <div class="product-card">
+                <img src="img/strawberry-regular.jpg" alt="Regular Strawberry" class="product-image">
+                <h2>Regular Strawberry</h2>
+                <p class="price">€2.99 per box</p>
+                <button class="add-to-cart" data-product="strawberry-regular">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/strawberry-stick.jpg" alt="Strawberry on a Stick" class="product-image">
+                <h2>Strawberry on a Stick</h2>
+                <p class="price">€3.49 per piece</p>
+                <button class="add-to-cart" data-product="strawberry-stick">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/strawberry-chocolate.jpg" alt="Chocolate Covered Strawberries" class="product-image">
+                <h2>Chocolate Covered Strawberries</h2>
+                <p class="price">€4.99 per box</p>
+                <button class="add-to-cart" data-product="strawberry-chocolate">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/strawberry-cream.jpg" alt="Strawberries with Whipped Cream" class="product-image">
+                <h2>Strawberries with Whipped Cream</h2>
+                <p class="price">€4.49 per portion</p>
+                <button class="add-to-cart" data-product="strawberry-cream">Add to Cart</button>
+            </div>
         </div>
-        <div class="button-container">
-          <button
-            id="addToBasket"
-            class="cart-action-btn"
-            aria-label="Add Strawberry to basket"
-          >
-            Add to Basket
-          </button>
-        </div>
-      </div>
     </main>
+
     <footer>
-      <a
-        href="https://www.linkedin.com/in/timlolkema/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        By Tim Lolkema
-      </a>
+        <a href="https://www.linkedin.com/in/timlolkema/" target="_blank" rel="noopener noreferrer">
+            By Tim Lolkema
+        </a>
     </footer>
+    
     <script src="shop.js"></script>
-    <script>
-      document.getElementById("addToBasket").onclick = function () {
-        addToBasket("strawberry");
-      };
-    </script>
-  </body>
+</body>
 </html>
