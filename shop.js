@@ -2,7 +2,11 @@ const PRODUCTS = {
   apple: { name: "Apple", emoji: "🍏" },
   banana: { name: "Banana", emoji: "🍌" },
   lemon: { name: "Lemon", emoji: "🍋" },
-  strawberry: { name: "Strawberry", emoji: "🍓" }
+  strawberry: { name: "Strawberry", emoji: "🍓" },
+  // Strawberry variants for user story 38
+  strawberry_stick: { name: "Strawberry on a Stick", emoji: "🍓" },
+  strawberry_chocolate: { name: "Chocolate Covered Strawberries", emoji: "🍓🍫" },
+  strawberry_cream: { name: "Strawberries with Whipped Cream", emoji: "🍓🥛" }
 };
 
 function getBasket() {
