@@ -16,6 +16,52 @@ body {
   margin: 0;
   color: #222;
 }
+/* Page-specific background for Strawberry page (anime-style request) */
+.bg-strawberry-anime {
+  /* Make default body background transparent so the hero background is visible */
+  background: transparent;
+  position: relative;
+}
+
+/* Full-viewport background layer with subtle dark overlay for readability */
+.bg-strawberry-anime::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  /* You can replace the URL below with an approved/licensed asset. 
+     The CSS variable --strawberry-anime-bg can also be set inline on <body> to override this. */
+  background-image:
+    linear-gradient(rgba(10, 6, 10, 0.55), rgba(10, 6, 10, 0.55)),
+    var(--strawberry-anime-bg, url("https://images.unsplash.com/photo-1498550744921-75f79806b8a7?q=80&w=1920&auto=format&fit=crop"));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 60%; /* slightly low framing */
+  background-attachment: fixed; /* low-angle cinematic feel */
+}
+
+/* Respect reduced motion: avoid fixed attachment to prevent parallax */
+@media (prefers-reduced-motion: reduce) {
+  .bg-strawberry-anime::before {
+    background-attachment: scroll;
+  }
+}
+
+/* Ensure content stays readable on photographic backgrounds (strawberry page only) */
+.bg-strawberry-anime .content-box {
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Keep header readable on top of the background */
+.bg-strawberry-anime header {
+  background: rgba(248, 245, 227, 0.92);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
 header {
   background: #f8f5e3;
   padding: 1.2rem 2.5rem;
