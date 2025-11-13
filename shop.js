@@ -2,7 +2,23 @@ const PRODUCTS = {
   apple: { name: "Apple", emoji: "🍏" },
   banana: { name: "Banana", emoji: "🍌" },
   lemon: { name: "Lemon", emoji: "🍋" },
-  strawberry: { name: "Strawberry", emoji: "🍓" }
+  strawberry: { name: "Strawberry", emoji: "🍓" },
+  // Strawberry variants for user story 38
+  strawberry_stick: { name: "Strawberry on a Stick", emoji: "🍓" },
+  strawberry_chocolate: { name: "Chocolate Covered Strawberries", emoji: "🍓🍫" },
+  strawberry_cream: { name: "Strawberries with Whipped Cream", emoji: "🍓🥛" },
+  // Apple variants
+  apple_caramel: { name: "Caramel Apple", emoji: "🍏🍮" },
+  apple_cinnamon: { name: "Baked Apple with Cinnamon", emoji: "🍏🥧" },
+  apple_slices_pb: { name: "Apple Slices with Peanut Butter", emoji: "🍏🥜" },
+  // Banana variants
+  banana_choco: { name: "Chocolate-Dipped Banana", emoji: "🍌🍫" },
+  banana_split: { name: "Banana Split", emoji: "🍌🍨" },
+  banana_smoothie: { name: "Banana Smoothie", emoji: "🍌🥤" },
+  // Lemon variants
+  lemon_lemonade: { name: "Fresh Lemonade", emoji: "🍋🥤" },
+  lemon_tart: { name: "Lemon Tart", emoji: "🍋🥧" },
+  lemon_candied: { name: "Candied Lemon Slices", emoji: "🍋🍬" }
 };
 
 function getBasket() {
@@ -85,3 +101,31 @@ window.clearBasket = function () {
   origClearBasket();
   renderBasketIndicator();
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.dataset.product;
+            addToCart(productId);
+        });
+    });
+});
+
+function addToCart(productId) {
+    // Haal de huidige winkelwagen op uit localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Voeg het product toe aan de winkelwagen
+    cart.push({
+        id: productId,
+        quantity: 1
+    });
+    
+    // Sla de bijgewerkte winkelwagen op
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Toon een bevestigingsbericht
+    alert('Product toegevoegd aan winkelwagen!');
+}

@@ -16,6 +16,52 @@ body {
   margin: 0;
   color: #222;
 }
+/* Page-specific background for Strawberry page (anime-style request) */
+.bg-strawberry-anime {
+  /* Make default body background transparent so the hero background is visible */
+  background: transparent;
+  position: relative;
+}
+
+/* Full-viewport background layer with subtle dark overlay for readability */
+.bg-strawberry-anime::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  /* You can replace the URL below with an approved/licensed asset. 
+     The CSS variable --strawberry-anime-bg can also be set inline on <body> to override this. */
+  background-image:
+    linear-gradient(rgba(10, 6, 10, 0.55), rgba(10, 6, 10, 0.55)),
+    var(--strawberry-anime-bg, url("https://images.unsplash.com/photo-1498550744921-75f79806b8a7?q=80&w=1920&auto=format&fit=crop"));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 60%; /* slightly low framing */
+  background-attachment: fixed; /* low-angle cinematic feel */
+}
+
+/* Respect reduced motion: avoid fixed attachment to prevent parallax */
+@media (prefers-reduced-motion: reduce) {
+  .bg-strawberry-anime::before {
+    background-attachment: scroll;
+  }
+}
+
+/* Ensure content stays readable on photographic backgrounds (strawberry page only) */
+.bg-strawberry-anime .content-box {
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Keep header readable on top of the background */
+.bg-strawberry-anime header {
+  background: rgba(248, 245, 227, 0.92);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
 header {
   background: #f8f5e3;
   padding: 1.2rem 2.5rem;
@@ -352,4 +398,57 @@ footer a {
   display: none;
   color: green;
   margin-top: 1rem;
+}
+
+.product-variants {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.product-card h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.price {
+    color: #2ecc71;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.add-to-cart {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart:hover {
+    background-color: #27ae60;
 }

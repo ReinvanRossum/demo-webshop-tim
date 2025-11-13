@@ -49,6 +49,37 @@
             Add to Basket
           </button>
         </div>
+
+        <!-- Special variants like on Strawberry page -->
+        <div class="product-desc" aria-label="Variant section introduction">
+          Fancy something special? Choose a lemon variant:
+        </div>
+        <div class="button-container" role="group" aria-label="Lemon variants">
+          <button
+            class="cart-action-btn variant-btn"
+            data-variant="lemon_lemonade"
+            aria-label="Add Fresh Lemonade to basket"
+          >
+            <img src="https://twemoji.maxcdn.com/v/latest/72x72/1f964.png" alt="" aria-hidden="true" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" />
+            <span>Fresh Lemonade</span>
+          </button>
+          <button
+            class="cart-action-btn variant-btn"
+            data-variant="lemon_tart"
+            aria-label="Add Lemon Tart to basket"
+          >
+            <img src="https://twemoji.maxcdn.com/v/latest/72x72/1f967.png" alt="" aria-hidden="true" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" />
+            <span>Lemon Tart</span>
+          </button>
+          <button
+            class="cart-action-btn variant-btn"
+            data-variant="lemon_candied"
+            aria-label="Add Candied Lemon Slices to basket"
+          >
+            <img src="https://twemoji.maxcdn.com/v/latest/72x72/1f36c.png" alt="" aria-hidden="true" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" />
+            <span>Candied Lemon Slices</span>
+          </button>
+        </div>
       </div>
     </main>
     <footer>
@@ -65,6 +96,13 @@
       document.getElementById("addToBasket").onclick = function () {
         addToBasket("lemon");
       };
+      // Hook up variant buttons
+      document.querySelectorAll('.variant-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var key = btn.getAttribute('data-variant');
+          addToBasket(key);
+        });
+      });
     </script>
   </body>
 </html>
