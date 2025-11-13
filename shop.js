@@ -85,3 +85,31 @@ window.clearBasket = function () {
   origClearBasket();
   renderBasketIndicator();
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.dataset.product;
+            addToCart(productId);
+        });
+    });
+});
+
+function addToCart(productId) {
+    // Haal de huidige winkelwagen op uit localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Voeg het product toe aan de winkelwagen
+    cart.push({
+        id: productId,
+        quantity: 1
+    });
+    
+    // Sla de bijgewerkte winkelwagen op
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Toon een bevestigingsbericht
+    alert('Product toegevoegd aan winkelwagen!');
+}
