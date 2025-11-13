@@ -50,6 +50,37 @@
             Add to Basket
           </button>
         </div>
+
+        <!-- Special variants like on Strawberry page -->
+        <div class="product-desc" aria-label="Variant section introduction">
+          Fancy something special? Choose an apple variant:
+        </div>
+        <div class="button-container" role="group" aria-label="Apple variants">
+          <button
+            class="cart-action-btn variant-btn"
+            data-variant="apple_caramel"
+            aria-label="Add Caramel Apple to basket"
+          >
+            <img src="https://twemoji.maxcdn.com/v/latest/72x72/1f36c.png" alt="" aria-hidden="true" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" />
+            <span>Caramel Apple</span>
+          </button>
+          <button
+            class="cart-action-btn variant-btn"
+            data-variant="apple_cinnamon"
+            aria-label="Add Baked Apple with Cinnamon to basket"
+          >
+            <img src="https://twemoji.maxcdn.com/v/latest/72x72/1f967.png" alt="" aria-hidden="true" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" />
+            <span>Baked Apple with Cinnamon</span>
+          </button>
+          <button
+            class="cart-action-btn variant-btn"
+            data-variant="apple_slices_pb"
+            aria-label="Add Apple Slices with Peanut Butter to basket"
+          >
+            <img src="https://twemoji.maxcdn.com/v/latest/72x72/1f95c.png" alt="" aria-hidden="true" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;" />
+            <span>Apple Slices with Peanut Butter</span>
+          </button>
+        </div>
       </div>
     </main>
     <footer>
@@ -66,6 +97,13 @@
       document.getElementById("addToBasket").onclick = function () {
         addToBasket("apple");
       };
+      // Hook up variant buttons
+      document.querySelectorAll('.variant-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var key = btn.getAttribute('data-variant');
+          addToBasket(key);
+        });
+      });
     </script>
   </body>
 </html>
